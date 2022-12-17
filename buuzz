@@ -1,0 +1,75 @@
+{
+	"info": {
+		"_postman_id": "ee0cd6e7-dea1-4059-946f-774cc0934522",
+		"name": "Passport",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12657812"
+	},
+	"item": [
+		{
+			"name": "Register User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Hari",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "hari@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "hari@gmail",
+							"type": "text"
+						},
+						{
+							"key": "roles",
+							"value": "Staff",
+							"type": "text"
+						},
+						{
+							"key": "status",
+							"value": "active",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/buuzz/public/api/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"buuzz",
+						"public",
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login User",
+			"request": {
+				"method": "POST",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
