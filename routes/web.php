@@ -28,7 +28,7 @@ Route::group(['as' => 'customer.','namespace' => 'App\Http\Controllers', 'prefix
 });
 
 Route::group(['as' => 'user.','namespace' => 'App\Http\Controllers', 'prefix' => 'user',], function () {
-    Route::get('forget-password', 'User\UserController@forgetPassword')->name('forgetPassword');
+    Route::get('forget-password/{token}', 'User\UserController@forgetPassword')->name('forgetPassword');
     Route::post('update-password', 'User\UserController@updatePassword')->name('updatePassword');
 
 });
@@ -81,6 +81,17 @@ Route::group(['middleware' => 'auth','namespace' => 'App\Http\Controllers'], fun
         Route::resource('permission', 'Permission\PermissionController');
         Route::get('permission-data', 'Permission\PermissionController@getAllData')->name('permission.data');
         Route::get('permission/{id}/destroy', 'Permission\PermissionController@destroy')->name('destroy');
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Today Share Price CRUD
+    |--------------------------------------------------------------------------
+    |
+    */
+
+    Route::resource('todayshare', 'TodayShare\TodayShareController');
+    Route::get('todayshare/destroy/{id}', 'TodayShare\TodayShareController@destroy')->name('todayshare.delete');
 
 
     Route::group(['as'=>'common.', 'prefix'=>'common'], function(){

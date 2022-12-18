@@ -268,6 +268,7 @@ class UserService extends Service
             $user= $this->user->where('email',$data['email'])->first();
             if(isset($user)) {
                 $data['password'] = Hash::make($data['password']);
+                $data['remember_token'] = Str::random(12);
                 $user = $user->update($data);
             } else {
                 Toastr()->error('The requested email does not exist','Sorry');
@@ -276,6 +277,19 @@ class UserService extends Service
             //$this->logger->info(' created successfully', $data);
 
             return true;
+        } catch (Exception $e) {
+            //$this->logger->error($e->getMessage());
+            return false;
+        }
+    }
+
+
+    public function findByToken($token)
+    {
+        try {
+            $user= $this->user->where('remember_token',$token)->first();
+            //$this->logger->info(' created successfully', $data);
+            return $user;
         } catch (Exception $e) {
             //$this->logger->error($e->getMessage());
             return false;

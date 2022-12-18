@@ -22,7 +22,7 @@ class AuthController extends BaseController
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required',
-            'phone' => 'required',
+            'phone' => 'required|unique:users,phone',
 
         ]);
 
@@ -34,7 +34,6 @@ class AuthController extends BaseController
         $input['password'] = bcrypt($input['password']);
         $user = User::create($input);
         $user->assignRole("Staff");
-        $success['token'] =  $user->createToken('authToken')->accessToken;
         $success['name'] =  $user->name;
         $success['email'] =  $user->email;
         return $this->sendResponse($success, 'User register successfully.');

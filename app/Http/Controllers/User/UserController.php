@@ -159,8 +159,14 @@ class UserController extends Controller
         }
     }
 
-    public function forgetPassword(Request $request) {
-        return view('auth.passwords.reset');
+    public function forgetPassword($token) {
+        $user = $this->user->findByToken($token);
+        if(isset($user)) {
+            return view('auth.passwords.reset',compact('user'));
+
+        } else {
+            return view('errors.404');
+        }
     }
 
     public function updatePassword(Request $request) {

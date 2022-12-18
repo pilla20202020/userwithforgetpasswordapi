@@ -25,6 +25,9 @@ Route::post('/forgetpassword', 'App\Http\Controllers\Api\AuthController@forgetPa
 Route::group(['middleware' => 'auth:api'], function(){
     Route::get('/logout', 'App\Http\Controllers\Api\AuthController@logout');
     Route::get('details', 'App\Http\Controllers\Api\AuthController@details');
+
+    Route::resource('todayshare', 'App\Http\Controllers\Api\TodayShare\TodayShareController')->middleware('role:SuperAdmin');
+    Route::get('todayshare/destroy/{id}', 'App\Http\Controllers\Api\TodayShare\TodayShareController@destroy')->name('todayshare.delete')->middleware('role:SuperAdmin');
 });
 
 

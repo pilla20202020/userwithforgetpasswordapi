@@ -39,6 +39,13 @@
                     </li>
                 @endrole
 
+                <li>
+                    <a href="{{route('todayshare.index','student')}}" class="waves-effect">
+                        <i class="fas fa-user"></i>
+                        <span>Today Share Price</span>
+                    </a>
+                </li>
+
             </ul>
         </div>
         <!-- Sidebar -->
